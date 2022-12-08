@@ -14,6 +14,29 @@
                     <label>Enable</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
+                <group id="dns_prefetch" translate="label" type="text" sortOrder="10" showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>DNS Prefetch</label>
+                    <depends>
+                        <field id="yvaliya_page_speed/resource_hints/enabled">1</field>
+                    </depends>
+                    <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1"
+                           showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Enable</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <config_path>yvaliya_page_speed/resource_hints_dns_prefetch/enabled</config_path>
+                    </field>
+                    <field id="urls" translate="label comment" type="textarea" sortOrder="15" showInDefault="1"
+                           showInWebsite="0" showInStore="0" canRestore="1">
+                        <label>URLs</label>
+                        <validate>validate-length maximum-length-56000</validate>
+                        <config_path>yvaliya_page_speed/resource_hints_dns_prefetch/urls</config_path>
+                        <depends>
+                            <field id="yvaliya_page_speed/resource_hints_dns_prefetch/enabled">1</field>
+                        </depends>
+                    </field>
+                </group>
             </group>
         </section>
     </system>
