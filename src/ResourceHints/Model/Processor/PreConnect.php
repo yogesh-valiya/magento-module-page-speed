@@ -8,7 +8,7 @@ use YValiya\PageSpeed\Api\OutputProcessorInterface;
 use YValiya\PageSpeed\Helper\OutputProcessorHelper;
 use YValiya\ResourceHints\Model\Config;
 
-class DNSPrefetch implements OutputProcessorInterface
+class PreConnect implements OutputProcessorInterface
 {
     private OutputProcessorHelper $outputProcessorHelper;
     private Config $config;
@@ -41,14 +41,14 @@ class DNSPrefetch implements OutputProcessorInterface
     {
         $html = '';
         foreach ($this->getUrls() as $url) {
-            $html .= "<link rel=\"dns-prefetch\" href=\"{$url}\">" . PHP_EOL;
+            $html .= "<link rel=\"preconnect\" href=\"{$url}\" />" . PHP_EOL;
         }
         return $html;
     }
 
     protected function getUrls(): array
     {
-        $urls = $this->config->getValue(Config::XML_PATH_DNS_PREFETCH_URLS);
+        $urls = $this->config->getValue(Config::XML_PATH_PRE_CONNECT_URLS);
         $urls = preg_split("/\r\n|\n|\r/", $urls);
         foreach ($urls as $key => &$value) {
             if (filter_var($value, FILTER_VALIDATE_URL) === false) {
@@ -63,6 +63,6 @@ class DNSPrefetch implements OutputProcessorInterface
     {
         return $this->config->isSetFlag(\YValiya\PageSpeed\Model\Config::XML_PATH_ENABLED) &&
             $this->config->isSetFlag(Config::XML_PATH_ENABLED) &&
-            $this->config->isSetFlag(Config::XML_PATH_DNS_PREFETCH_ENABLED);
+            $this->config->isSetFlag(Config::XML_PATH_PRE_CONNECT_ENABLED);
     }
 }

@@ -8,6 +8,10 @@
                     <item name="processor" xsi:type="object">YValiya\ResourceHints\Model\Processor\DNSPrefetch</item>
                     <item name="sortOrder" xsi:type="number">100</item>
                 </item>
+                <item name="pre-connect" xsi:type="array">
+                    <item name="processor" xsi:type="object">YValiya\ResourceHints\Model\Processor\PreConnect</item>
+                    <item name="sortOrder" xsi:type="number">110</item>
+                </item>
             </argument>
         </arguments>
     </type>

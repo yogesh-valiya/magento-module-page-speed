@@ -20,7 +20,8 @@ class OutputProcessorChain implements OutputProcessorChainInterface
 
     public function process(string &$output): bool
     {
-        foreach ($this->processors as $processor) {
+        $sortedProcessors = $this->getSortedProcessors();
+        foreach ($sortedProcessors as $processor) {
             if (($processor['processor'] ?? false) && (!$processor['processor'] instanceof OutputProcessorInterface)) {
                 continue;
             }
