@@ -5,13 +5,14 @@ namespace YValiya\PageSpeed\Plugin;
 use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Controller\ResultInterface;
 use YValiya\PageSpeed\Api\OutputProcessorChain;
+use YValiya\PageSpeed\Api\OutputProcessorChainInterface;
 
 class ProcessPageResult
 {
-    private OutputProcessorChain $outputProcessorChain;
+    private OutputProcessorChainInterface $outputProcessorChain;
 
     public function __construct(
-        OutputProcessorChain $outputProcessorChain
+        OutputProcessorChainInterface $outputProcessorChain
     )
     {
         $this->outputProcessorChain = $outputProcessorChain;

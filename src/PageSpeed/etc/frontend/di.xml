@@ -5,4 +5,15 @@
         <plugin name="YValiya_PageSpeed_ProcessPageResult" type="YValiya\PageSpeed\Plugin\ProcessPageResult"
                 sortOrder="20"/>
     </type>
+
+    <type name="YValiya\PageSpeed\Api\OutputProcessorChainInterface">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="should-be-html" xsi:type="array">
+                    <item name="processor" xsi:type="object">YValiya\PageSpeed\Model\Processor\ShouldBeHtml</item>
+                    <item name="sortOrder" xsi:type="number">1</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
 </config>

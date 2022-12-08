@@ -2,7 +2,7 @@
 
 namespace YValiya\PageSpeed\Api;
 
-interface OutputProcessorChain
+interface OutputProcessorChainInterface
 {
     public function process(string &$output): bool;
 }
